@@ -1,0 +1,79 @@
+# ---------------------------
+# Sistema Operativo
+# ---------------------------
+.DS_Store
+Thumbs.db
+
+# ---------------------------
+# Archivos de compilación
+# ---------------------------
+target/
+out/
+bin/
+
+# ---------------------------
+# Archivos de Maven
+# ---------------------------
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# ---------------------------
+# Archivos de Eclipse/IDE
+# ---------------------------
+.settings/
+.project
+.classpath
+*.launch
+*.log
+*.bak
+*.swp
+
+# ---------------------------
+# Archivos de IntelliJ IDEA
+# ---------------------------
+.idea/
+*.iml
+*.iws
+out/
+
+# ---------------------------
+# Archivos de NetBeans
+# ---------------------------
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+*.nb-gradle
+
+# ---------------------------
+# SonarQube local
+# ---------------------------
+.sonar/
+sonar-report-task.txt
+sonar-scanner.properties
+
+# ---------------------------
+# Archivos temporales y logs
+# ---------------------------
+*.tmp
+*.temp
+*.log
+*.diff
+*.patch
+
+# ---------------------------
+# Otros
+# ---------------------------
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
