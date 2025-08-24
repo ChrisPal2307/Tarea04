@@ -52,9 +52,6 @@ public class Evento extends Observable<Evento> {
         return organizador;
     }
 
-    public void setAdministracion(DepartamentoAdministracion d){
-        this.administracion = d;
-    }
 
     public void setOrganizador(Organizador organizador) {
         this.organizador = organizador;
