@@ -49,17 +49,8 @@ public class Cliente extends Usuario {
 
 
     public boolean reservarBoleto(Evento evento, int cantidad, TipoBoleto tipo) {
-        List<Boleto> disponibles = new ArrayList<>();
-
-        // Buscar boletos disponibles del tipo solicitado
-        for (Boleto b : evento.getBoletosDisponibles()) {
-            if (b.getTipo() == tipo && b.getEstado() == EstadoBoleto.DISPONIBLE) {
-                disponibles.add(b);
-                if (disponibles.size() == cantidad) {
-                    break;
-                }
-            }
-        }
+        
+    	List<Boleto> disponibles = evento.disponiblesPorTipo(tipo);
 
         if (disponibles.size() < cantidad) {
             // No hay suficientes boletos disponibles

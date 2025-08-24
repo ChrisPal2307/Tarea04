@@ -33,6 +33,18 @@ public class Evento extends Observable<Evento> {
                 .filter(b -> b.getEstado() == EstadoBoleto.DISPONIBLE)
                 .collect(Collectors.toList());
     }
+    
+    public List<Boleto> disponiblesPorTipo(TipoBoleto tipo){
+    	List<Boleto> disponibles = new ArrayList<>();
+
+        // Buscar boletos disponibles del tipo solicitado
+        for (Boleto b : this.getBoletosDisponibles()) {
+            if (b.getTipo() == tipo && b.getEstado() == EstadoBoleto.DISPONIBLE) {
+                disponibles.add(b);
+                }
+            }   	
+        return disponibles;
+    }
 
     public void cancelarEvento() {
         // Lógica para cancelar el evento
