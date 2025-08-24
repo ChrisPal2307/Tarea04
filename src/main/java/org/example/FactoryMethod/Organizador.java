@@ -3,6 +3,7 @@ package org.example.FactoryMethod;
 import org.example.Boleto;
 import org.example.EstadoBoleto;
 import org.example.Evento;
+import org.example.FechaEvento;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class Organizador extends Usuario {
         if (telefono == null) throw new IllegalArgumentException("El teléfono no puede ser null");
     }
 
-    public boolean cambioFechaEvento(Evento evento, LocalDate nuevaFecha) {
+    public boolean cambioFechaEvento(Evento evento, FechaEvento nuevaFecha) {
         List<Cliente> clientes = evento.getClientes();
         boolean todosNotificados = true;
         for (Cliente cliente : clientes) {
@@ -28,7 +29,7 @@ public class Organizador extends Usuario {
                 cliente.recibirNotificacion("El evento '" + evento.getNombre() + "' ha cambiado su fecha a: " + nuevaFecha);
             }
         }
-        List<LocalDate> fechas = evento.getFechas();
+        List<FechaEvento> fechas = evento.getFechas();
         if (fechas != null && !fechas.isEmpty()) {
             fechas.clear();
         } else {
