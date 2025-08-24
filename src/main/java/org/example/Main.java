@@ -102,7 +102,7 @@ public class Main {
         System.out.println("----- Caso en de cancelacion de evento ------");
         o1.cancelacionEvento(evento1);
         System.out.println("----- Caso en de cambio de fecha ------");
-        o1.cambioFechaEvento(evento1, LocalDate.of(2025, 12, 10));
+        o1.cambioFechaEvento(evento1, new FechaEvento(LocalDate.of(2025, 12, 10),ubi1));
 
         //soporte para reportar los problemas
         SoporteHandler s1 = new AgenteSoporte("Pepe", "pepito@gmail.com");
