@@ -30,11 +30,7 @@ public class EventoTest {
         Evento evento = new Evento(nombre, artista, tipoMusica);
         return evento;
     }
-
-    private Cliente getMockCliente() {
-        return new Cliente("Cliente 1", "cliente1@example.com", "123456789");
-    }
-
+    
     private Boleto getMockBoleto(EstadoBoleto estado) {
         Boleto boleto = new Boleto("1", TipoBoleto.GENERAL, 100.0);
         boleto.setEstado(estado);
