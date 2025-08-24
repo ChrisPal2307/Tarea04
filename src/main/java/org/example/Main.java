@@ -3,6 +3,7 @@ package org.example;
 import org.example.ChainOfResponsability.AgenteSoporte;
 import org.example.ChainOfResponsability.DepartamentoAdministracion;
 import org.example.ChainOfResponsability.SoporteHandler;
+import org.example.ChainOfResponsability.TipoSolicitud;
 import org.example.Observer.CanalNotificacion;
 import org.example.Observer.NotificacionAppMensajeria;
 import org.example.Observer.NotificacionEmail;
@@ -110,8 +111,8 @@ public class Main {
         s1.setSiguiente(s2);
 
         //Incidentes
-        Incidente i1 = new Incidente("Problema de pago");
-        Incidente i2 = new Incidente("Error persistente");
+        Incidente i1 = new Incidente(TipoSolicitud.PROBLEMA_PAGO);
+        Incidente i2 = new Incidente(TipoSolicitud.OTRO);
         c1.getIncidentes().add(i1);
         c1.getIncidentes().add(i2);
 

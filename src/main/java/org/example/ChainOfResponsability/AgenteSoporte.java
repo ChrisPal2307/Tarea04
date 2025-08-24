@@ -9,8 +9,8 @@ public class AgenteSoporte extends SoporteHandler {
         this.nombre = nombre;
     }
     @Override
-    public void manejarSolicitud(String solicitud) {
-        if (solicitud.equalsIgnoreCase("Problema de pago")) {
+    public void manejarSolicitud(TipoSolicitud solicitud) {
+        if (solicitud == TipoSolicitud.PROBLEMA_PAGO) {
             System.out.println("Soporte de agente: El agente está resolviendo el problema");
         } else if (siguiente != null) {
             siguiente.manejarSolicitud(solicitud);

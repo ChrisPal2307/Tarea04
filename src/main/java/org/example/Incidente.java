@@ -1,25 +1,17 @@
 package org.example;
 
+import org.example.ChainOfResponsability.TipoSolicitud;
+
 public class Incidente {
-    private String descripcion;
+    private TipoSolicitud descripcion;
     private boolean resuelto;
 
-    public Incidente(String descripcion) {
-        validarDescripcion(descripcion);
+    public Incidente(TipoSolicitud descripcion) {
         this.descripcion = descripcion;
         this.resuelto = false;
     }
 
-    private void validarDescripcion(String descripcion) {
-        if (descripcion == null || descripcion.trim().isEmpty()) {
-            throw new IllegalArgumentException("La descripción no puede estar vacía.");
-        }
-        if (descripcion.split(" ").length < 15) {
-            throw new IllegalArgumentException("La descripción debe tener al menos 15 palabras.");
-        }
-    }
-
-    public String getDescripcion() {
+    public TipoSolicitud getDescripcion() {
         return descripcion;
     }
 

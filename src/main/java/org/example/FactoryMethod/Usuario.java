@@ -13,6 +13,7 @@ public abstract class Usuario {
         this.correo = correo;
         this.telefono = telefono;
     }
+    
     @Override
     public String toString() {
         return "Usuario{" +

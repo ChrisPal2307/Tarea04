@@ -7,5 +7,5 @@ public abstract class SoporteHandler {
         this.siguiente = siguiente;
     }
 
-    public abstract void manejarSolicitud(String solicitud);
+    public abstract void manejarSolicitud(TipoSolicitud solicitud);
 }
