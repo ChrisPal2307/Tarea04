@@ -25,8 +25,6 @@ public class EventoTest {
     private String artista = "Artista de Prueba";
     private String tipoMusica = "Rock";
 
-    public EventoTest() {
-    }
 
     private Evento crearMockEvento() {
         Evento evento = new Evento(nombre, artista, tipoMusica);

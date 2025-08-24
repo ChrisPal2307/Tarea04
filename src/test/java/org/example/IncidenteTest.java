@@ -16,8 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class IncidenteTest {
     private String validDescription = "Descripción del incidente con más de quince palabras para cumplir con el requisito de indicidente válido.";
 
-    public IncidenteTest() {
-    }
 
     private Incidente getMockIncidente() {
         return new Incidente(validDescription);

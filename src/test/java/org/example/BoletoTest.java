@@ -16,9 +16,6 @@ public class BoletoTest {
     private TipoBoleto tipo = TipoBoleto.GENERAL;
     private double precio = 100.0;
 
-    public BoletoTest() {
-    }
-
 
     @Test
     public void testToString() {
