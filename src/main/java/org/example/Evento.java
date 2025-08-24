@@ -14,8 +14,7 @@ public class Evento extends Observable<Evento> {
     private String nombre;
     private String artista;
     private String tipoMusica;
-    private List<Ubicacion> ubicaciones;
-    private List<LocalDate> fechas;
+    private List<FechaEvento> fechas;
     private List<Boleto> boletos;
     private List<Cliente> clientes;
     private Organizador organizador;
@@ -26,7 +25,6 @@ public class Evento extends Observable<Evento> {
         this.tipoMusica = tipoMusica;
         this.clientes = new ArrayList<>();
         this.boletos = new ArrayList<>();
-        this.ubicaciones = new ArrayList<>();
         this.fechas = new ArrayList<>();
     }
 
@@ -44,7 +42,7 @@ public class Evento extends Observable<Evento> {
         return nombre;
     }
 
-    public List<LocalDate> getFechas(){
+    public List<FechaEvento> getFechas(){
         return fechas;
     }
 
@@ -64,16 +62,16 @@ public class Evento extends Observable<Evento> {
         return clientes;
     }
 
-    public void setUbicaciones(List<Ubicacion> ubicaciones) {
-        notifyListeners(this);
-        this.ubicaciones = ubicaciones;
-    }
-    public void setFechas(List<LocalDate> fechas) {
+    public void setFechas(List<FechaEvento> fechas) {
         notifyListeners(this);
         this.fechas = fechas;
     }
     public void setBoletos(List<Boleto> boletos) {
         this.boletos = boletos;
+    }
+    
+    public void NuevaFecha(LocalDate cuando, Ubicacion donde) {
+    	fechas.add(new FechaEvento(cuando,donde));
     }
 
     @Override
@@ -83,10 +81,6 @@ public class Evento extends Observable<Evento> {
         sb.append("Evento: ").append(nombre).append("\n")
                 .append("Artista: ").append(artista).append("\n")
                 .append("Tipo de música: ").append(tipoMusica).append("\n");
-
-        // Lista de ubicaciones
-        sb.append("Ubicaciones:\n");
-        addListToStringBuilder(artista, ubicaciones, sb);
 
         // Lista de fechas
         sb.append("Fechas disponibles:\n");
