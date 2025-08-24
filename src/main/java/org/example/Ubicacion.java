@@ -8,30 +8,25 @@ public class Ubicacion {
     private double longitud;
 
     public Ubicacion(String direccion, String ciudad, String pais, double latitud, double longitud) {
-        validarUbicacion(direccion, ciudad, pais, latitud, longitud);
-        this.direccion = direccion;
-        this.ciudad = ciudad;
-        this.pais = pais;
-        this.latitud = latitud;
-        this.longitud = longitud;
+        this.direccion = cadenaValida(direccion, "dirección");
+        this.ciudad = cadenaValida(ciudad, "ciudad");
+        this.pais = cadenaValida(pais, "país");
+        this.latitud = validarRangoNumerico(latitud, -90, 90, "latitud");
+        this.longitud = validarRangoNumerico(longitud, -180, 180, "longitud");
     }
 
-    private void validarUbicacion(String direccion, String ciudad, String pais, double latitud, double longitud) {
-        if (direccion == null || direccion.trim().isEmpty()) {
-            throw new IllegalArgumentException("La dirección no puede estar vacía.");
+    private String cadenaValida(String data, String nombreCampo) {
+        if (data == null || data.trim().isEmpty()) {
+            throw new IllegalArgumentException("El " + nombreCampo + " no puede estar vacío.");
         }
-        if (ciudad == null || ciudad.trim().isEmpty()) {
-            throw new IllegalArgumentException("La ciudad no puede estar vacía.");
+        return data;
+    }
+
+    private double validarRangoNumerico(double valor, double min, double max, String nombreCampo) {
+        if (valor < min || valor > max) {
+            throw new IllegalArgumentException("El " + nombreCampo + " debe estar entre " + min + " y " + max + ".");
         }
-        if (pais == null || pais.trim().isEmpty()) {
-            throw new IllegalArgumentException("El país no puede estar vacío.");
-        }
-        if (latitud < -90 || latitud > 90) {
-            throw new IllegalArgumentException("La latitud debe estar entre -90 y 90.");
-        }
-        if (longitud < -180 || longitud > 180) {
-            throw new IllegalArgumentException("La longitud debe estar entre -180 y 180.");
-        }
+        return valor;
     }
 
     // Getters y Setters
