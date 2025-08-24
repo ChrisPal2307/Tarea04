@@ -9,18 +9,14 @@ public class Boleto extends Observable<Boleto> {
     private EstadoBoleto estado;
 
     public Boleto(String id, TipoBoleto tipo, Precio precio) {
-        validarPrecio(precio.getValor());
+        precio.validarPrecio();
         this.id = id;
         this.tipo = tipo;
         this.precio = precio;
         this.estado = EstadoBoleto.DISPONIBLE;
     }
 
-    private void validarPrecio(double precio) {
-        if (precio <= 0 || precio > 1000) {
-            throw new IllegalArgumentException("Precio no válido");
-        }
-    }
+    
 
     public String getId() {
         return id;

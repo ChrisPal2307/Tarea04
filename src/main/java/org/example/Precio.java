@@ -15,6 +15,12 @@ public class Precio {
         this.divisa = divisa;
     }
 
+    public void validarPrecio() {
+        if (this.getValor() <= 0 || this.getValor() > 1000) {
+            throw new IllegalArgumentException("Precio no válido");
+        }
+    }
+
     public double getValor() {
         return valor;
     }
