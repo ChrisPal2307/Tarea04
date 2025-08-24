@@ -5,7 +5,7 @@ public abstract class Usuario {
     protected String correo;
     protected String telefono;
 
-    public Usuario(String nombre, String correo, String telefono) {
+    protected Usuario(String nombre, String correo, String telefono) {
         if (nombre == null) throw new IllegalArgumentException("El nombre no puede ser null");
         if (correo == null) throw new IllegalArgumentException("El correo no puede ser null");
         if (telefono == null) throw new IllegalArgumentException("El teléfono no puede ser null");
