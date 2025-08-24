@@ -151,8 +151,8 @@ class ClienteTest {
     @Test
     void pagar_Sin_Boletos_Reservados() {
         Cliente cliente = new Cliente("Juan", "juan@test.com", "123456");
-        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, 50.0);
-        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, 100.0);
+        new Boleto("id1", TipoBoleto.GENERAL, 50.0);
+        new Boleto("id2", TipoBoleto.VIP, 100.0);
         boolean resultado = cliente.pagar();
         assertFalse(resultado);
     }

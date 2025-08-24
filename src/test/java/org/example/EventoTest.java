@@ -30,7 +30,7 @@ public class EventoTest {
         Evento evento = new Evento(nombre, artista, tipoMusica);
         return evento;
     }
-    
+
     private Boleto getMockBoleto(EstadoBoleto estado) {
         Boleto boleto = new Boleto("1", TipoBoleto.GENERAL, 100.0);
         boleto.setEstado(estado);
