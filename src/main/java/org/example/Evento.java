@@ -19,7 +19,6 @@ public class Evento extends Observable<Evento> {
     private List<Boleto> boletos;
     private List<Cliente> clientes;
     private Organizador organizador;
-    private DepartamentoAdministracion administracion;
 
     public Evento(String nombre, String artista, String tipoMusica) {
         this.nombre = nombre;
