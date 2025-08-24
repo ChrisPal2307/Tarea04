@@ -38,9 +38,12 @@ class OrganizadorTest {
     @Test
     void cambioFechaEvento_Sin_canales_Notificacion() {
         Evento evento = new Evento("Concierto", "Artista X", "Rock");
-        List<LocalDate> fechasOriginales = new ArrayList<>();
-        fechasOriginales.add(LocalDate.of(2025, 8, 15));
-        fechasOriginales.add(LocalDate.of(2025, 8, 16));
+        
+        List<FechaEvento> fechasOriginales = new ArrayList<>();
+        
+        fechasOriginales.add(new FechaEvento(LocalDate.of(2025, 8, 15),new Ubicacion("Parque Samanes", "Guayaquil","Ecuador",-2.10, -79.89)));
+        fechasOriginales.add(new FechaEvento(LocalDate.of(2025, 8, 16),new Ubicacion("Parque Samanes", "Guayaquil","Ecuador",-2.10, -79.89)));
+        
         evento.setFechas(fechasOriginales);
 
         Cliente cliente1 = new Cliente("Ana", "ana@test.com", "123");
@@ -51,16 +54,19 @@ class OrganizadorTest {
         evento.setClientes(clientes);
 
         Organizador organizador = new Organizador("Org", "org@test.com", "789");
-        LocalDate nuevaFecha = LocalDate.of(2025, 9, 1);
+        FechaEvento nuevaFecha = new FechaEvento(LocalDate.of(2025, 9, 1),new Ubicacion("Parque Samanes", "Guayaquil","Ecuador",-2.10, -79.89));
         assertFalse(organizador.cambioFechaEvento(evento, nuevaFecha));
     }
 
     @Test
     void cambioFechaEvento_ConCanales_Notificacion() {
         Evento evento = new Evento("Concierto", "Artista X", "Rock");
-        List<LocalDate> fechasOriginales = new ArrayList<>();
-        fechasOriginales.add(LocalDate.of(2025, 8, 15));
-        fechasOriginales.add(LocalDate.of(2025, 8, 16));
+
+        List<FechaEvento> fechasOriginales = new ArrayList<>();
+        
+        fechasOriginales.add(new FechaEvento(LocalDate.of(2025, 8, 15),new Ubicacion("Parque Samanes", "Guayaquil","Ecuador",-2.10, -79.89)));
+        fechasOriginales.add(new FechaEvento(LocalDate.of(2025, 8, 16),new Ubicacion("Parque Samanes", "Guayaquil","Ecuador",-2.10, -79.89)));
+        
         evento.setFechas(fechasOriginales);
 
         Cliente cliente1 = new Cliente("Ana", "ana@test.com", "123");
@@ -75,7 +81,7 @@ class OrganizadorTest {
         evento.setClientes(clientes);
 
         Organizador organizador = new Organizador("Org", "org@test.com", "789");
-        LocalDate nuevaFecha = LocalDate.of(2025, 9, 1);
+        FechaEvento nuevaFecha = new FechaEvento(LocalDate.of(2025, 9, 1),new Ubicacion("Parque Samanes", "Guayaquil","Ecuador",-2.10, -79.89));
 
         assertTrue(organizador.cambioFechaEvento(evento, nuevaFecha));
     }
