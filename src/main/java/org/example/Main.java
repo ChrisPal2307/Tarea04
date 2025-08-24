@@ -21,23 +21,24 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         //Ubicaciones
-        ArrayList<Ubicacion> ubicacionesEvento1 = new ArrayList<>();
-        ubicacionesEvento1.add(new Ubicacion("Av. Principal 123", "Quito", "Ecuador", -0.18, -78.46));
-        ubicacionesEvento1.add(new Ubicacion("Calle 45", "Guayaquil", "Ecuador", -2.18, -79.89));
-        ArrayList<Ubicacion> ubicacionesEvento2 = new ArrayList<>();
-        ubicacionesEvento2.add(new Ubicacion("Teatro Nacional", "Quito", "Ecuador", -0.21, -78.50));
+        Ubicacion ubi1 = (new Ubicacion("Av. Principal 123", "Quito", "Ecuador", -0.18, -78.46));
+        Ubicacion ubi2 = (new Ubicacion("Calle 45", "Guayaquil", "Ecuador", -2.18, -79.89));
+
+        Ubicacion ubi3 = (new Ubicacion("Teatro Nacional", "Quito", "Ecuador", -0.21, -78.50));
         //Fechas de eventos
-        ArrayList<LocalDate> fechasEvento1 = new ArrayList<>();
-        fechasEvento1.add(LocalDate.of(2025, 9, 12));
-        fechasEvento1.add(LocalDate.of(2025, 9, 13));
-        ArrayList<LocalDate> fechasEvento2 = new ArrayList<>();
-        fechasEvento2.add(LocalDate.of(2025, 10, 5));
+        ArrayList<FechaEvento> fechasEvento1 = new ArrayList<>();
+        
+        fechasEvento1.add(new FechaEvento((LocalDate.of(2025, 9, 12)), ubi1));
+        fechasEvento1.add(new FechaEvento((LocalDate.of(2025, 9, 13)), ubi2));
+        
+        ArrayList<FechaEvento> fechasEvento2 = new ArrayList<>();
+        fechasEvento2.add(new FechaEvento((LocalDate.of(2025, 10, 5)),ubi3));
+        
         //Eventos
         Evento evento1 = new Evento("Rock Fest", "The Rockers", "Rock");
-        evento1.setUbicaciones(ubicacionesEvento1);
-        evento1.setFechas(fechasEvento1);
+        evento1.setFechas(fechasEvento2);
+        
         Evento evento2 = new Evento("Jazz Night", "Smooth Jazz Band", "Jazz");
-        evento2.setUbicaciones(ubicacionesEvento2);
         evento2.setFechas(fechasEvento2);
 
         //Organizadores de eventos
