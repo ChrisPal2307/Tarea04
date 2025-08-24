@@ -88,26 +88,43 @@ public class Cliente extends Usuario {
         metodoPago.pagar(monto);
     }
 
-    public boolean pagar() {
-        if (boletosReservados == null || boletosReservados.isEmpty()) {
+    public boolean checkReservas() {
+    	if (boletosReservados == null || boletosReservados.isEmpty()) {
             System.out.println("No hay boletos reservados para pagar.");
             return false;
         }
-        if (metodoPago == null) {
+    	return true;
+    }
+    
+    public boolean checkPago() {
+    	if (metodoPago == null) {
             System.out.println("No se ha seleccionado un método de pago.");
             return false;
         }
-        double total = 0.0;
-        for (Boleto b : boletosReservados) {
-            total += b.getPrecio().getValor();
+    	return true;
+    }
+    
+    public boolean pagar() {
+        
+        if (this.checkReservas() && this.checkPago()) {
+        	
+        	double total = 0.0;
+        	for (Boleto b : boletosReservados) {
+        		total += b.getPrecio().getValor();
+        	}
+        	
+        	realizarPago(total);
+        	
+        	for (Boleto b : boletosReservados) {
+        		b.setEstado(EstadoBoleto.VENDIDO);
+        		boletosComprados.add(b);
+        	}
+        	
+        	boletosReservados.clear();
+        	return true;
         }
-        realizarPago(total);
-        for (Boleto b : boletosReservados) {
-            b.setEstado(EstadoBoleto.VENDIDO);
-            boletosComprados.add(b);
-        }
-        boletosReservados.clear();
-        return true;
+        
+        return false;
     }
 
     public List<Boleto> getBoletosReservados(){
