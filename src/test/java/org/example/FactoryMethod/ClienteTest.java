@@ -1,14 +1,11 @@
 package org.example.FactoryMethod;
 
-import org.example.Boleto;
-import org.example.Evento;
-import org.example.Incidente;
+import org.example.*;
 import org.example.Observer.CanalNotificacion;
 import org.example.Observer.NotificacionEmail;
 import org.example.Observer.NotificacionSMS;
 import org.example.Strategy.MetodoPago;
 import org.example.Strategy.PagoTarjetaCredito;
-import org.example.TipoBoleto;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -84,9 +81,9 @@ class ClienteTest {
     @Test
     void reservarBoleto_ReservaExitosa() {
         Evento evento = new Evento("Concierto", "Artista", "Rock");
-        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, 50.0);
-        Boleto b2 = new Boleto("id2", TipoBoleto.GENERAL, 50.0);
-        Boleto b3 = new Boleto("id3", TipoBoleto.VIP, 100.0);
+        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
+        Boleto b2 = new Boleto("id2", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
+        Boleto b3 = new Boleto("id3", TipoBoleto.VIP, new Precio(100.0, "USD"));
         List<Boleto> boletos = new ArrayList<>();
         boletos.add(b1);
         boletos.add(b2);
@@ -100,9 +97,9 @@ class ClienteTest {
     @Test
     void reservarBoleto_ReservaNoExitosa() {
         Evento evento = new Evento("Concierto", "Artista", "Rock");
-        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, 50.0);
-        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, 50.0);
-        Boleto b3 = new Boleto("id3", TipoBoleto.VIP, 100.0);
+        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
+        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, new Precio(50.0, "USD"));
+        Boleto b3 = new Boleto("id3", TipoBoleto.VIP, new Precio(50.0, "USD"));
         List<Boleto> boletos = new ArrayList<>();
         boletos.add(b1);
         boletos.add(b2);
@@ -129,8 +126,8 @@ class ClienteTest {
         Cliente cliente = new Cliente("Juan", "juan@test.com", "123456");
         MetodoPago metodoPago = new PagoTarjetaCredito();
         cliente.setMetodoPago(metodoPago);
-        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, 50.0);
-        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, 100.0);
+        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
+        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, new Precio(50.0, "USD"));
         cliente.getBoletosReservados().add(b1);
         cliente.getBoletosReservados().add(b2);
         boolean resultado = cliente.pagar();
@@ -140,8 +137,8 @@ class ClienteTest {
     @Test
     void pagar_Sin_Metodo_de_Pago() {
         Cliente cliente = new Cliente("Juan", "juan@test.com", "123456");
-        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, 50.0);
-        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, 100.0);
+        Boleto b1 = new Boleto("id1", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
+        Boleto b2 = new Boleto("id2", TipoBoleto.VIP, new Precio(50.0, "USD"));
         cliente.getBoletosReservados().add(b1);
         cliente.getBoletosReservados().add(b2);
         boolean resultado = cliente.pagar();
@@ -151,8 +148,8 @@ class ClienteTest {
     @Test
     void pagar_Sin_Boletos_Reservados() {
         Cliente cliente = new Cliente("Juan", "juan@test.com", "123456");
-        new Boleto("id1", TipoBoleto.GENERAL, 50.0);
-        new Boleto("id2", TipoBoleto.VIP, 100.0);
+        new Boleto("id1", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
+        new Boleto("id2", TipoBoleto.VIP, new Precio(50.0, "USD"));
         boolean resultado = cliente.pagar();
         assertFalse(resultado);
     }
@@ -162,7 +159,7 @@ class ClienteTest {
     @Test
     void getBoletosReservados() {
         Cliente cliente = new Cliente("Ana", "ana@test.com", "987654");
-        Boleto boleto = new Boleto("id1", TipoBoleto.GENERAL, 30.0);
+        Boleto boleto = new Boleto("id1", TipoBoleto.GENERAL, new Precio(50.0, "USD"));
         cliente.getBoletosReservados().add(boleto);
         List<Boleto> reservados = cliente.getBoletosReservados();
         assertTrue(reservados.contains(boleto));

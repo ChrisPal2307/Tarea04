@@ -75,7 +75,7 @@ public class Organizador extends Usuario {
             List<Boleto> boletosADevolver = cliente.getBoletosComprados();
             if (boletosADevolver != null && !boletosADevolver.isEmpty()) {
                 for (Boleto b : boletosADevolver) {
-                    totalDevolucion += b.getPrecio();
+                    totalDevolucion += b.getPrecio().getValor();
                     b.setEstado(EstadoBoleto.CANCELADO);
                 }
                 boletosADevolver.clear();

@@ -5,11 +5,11 @@ import org.example.Observer.Observable;
 public class Boleto extends Observable<Boleto> {
     private String id;
     private TipoBoleto tipo; // General, VIP, Asiento reservado
-    private double precio;
+    private Precio precio;
     private EstadoBoleto estado;
 
-    public Boleto(String id, TipoBoleto tipo, double precio) {
-        validarPrecio(precio);
+    public Boleto(String id, TipoBoleto tipo, Precio precio) {
+        validarPrecio(precio.getValor());
         this.id = id;
         this.tipo = tipo;
         this.precio = precio;
@@ -36,7 +36,7 @@ public class Boleto extends Observable<Boleto> {
         this.estado = estadoBoleto;
         notifyListeners(this);
     }
-    public double getPrecio(){
+    public Precio getPrecio(){
         return precio;
     }
 

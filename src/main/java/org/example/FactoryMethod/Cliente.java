@@ -99,7 +99,7 @@ public class Cliente extends Usuario {
         }
         double total = 0.0;
         for (Boleto b : boletosReservados) {
-            total += b.getPrecio();
+            total += b.getPrecio().getValor();
         }
         realizarPago(total);
         for (Boleto b : boletosReservados) {

@@ -14,7 +14,7 @@ import static org.mockito.Mockito.*;
 public class BoletoTest {
     private String id = "1";
     private TipoBoleto tipo = TipoBoleto.GENERAL;
-    private double precio = 100.0;
+    private Precio precio = new Precio(120.0, "USD");
 
 
     @Test
@@ -32,10 +32,11 @@ public class BoletoTest {
         "0.0",
         "1500.0"
     })
-    public void testPrecioNoValido(double precio) {
+    public void testPrecioNoValido(double valor) {
         System.out.println("testPrecioNoValido");
         assertThrows(IllegalArgumentException.class, () -> {
-            Boleto instance = new Boleto(id, tipo, precio);
+            Precio precio = new Precio(valor, "USD");
+            Boleto instance = new Boleto("B001", TipoBoleto.GENERAL, precio);
         });
     }
 

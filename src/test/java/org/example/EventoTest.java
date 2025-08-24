@@ -32,7 +32,7 @@ public class EventoTest {
     }
 
     private Boleto getMockBoleto(EstadoBoleto estado) {
-        Boleto boleto = new Boleto("1", TipoBoleto.GENERAL, 100.0);
+        Boleto boleto = new Boleto("1", TipoBoleto.GENERAL, new Precio(100.0, "USD"));
         boleto.setEstado(estado);
         return boleto;
     }

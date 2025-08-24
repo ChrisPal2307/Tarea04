@@ -1,12 +1,9 @@
 package org.example.FactoryMethod;
 
-import org.example.Boleto;
-import org.example.EstadoBoleto;
-import org.example.Evento;
+import org.example.*;
 import org.example.Observer.CanalNotificacion;
 import org.example.Observer.NotificacionEmail;
 import org.example.Observer.NotificacionSMS;
-import org.example.TipoBoleto;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -87,8 +84,8 @@ class OrganizadorTest {
     void testHacerDevoluciones_ConBoletosComprados() {
         Evento evento = new Evento("Concierto", "Artista X", "Rock");
         Cliente cliente = new Cliente("Ana", "ana@test.com", "123");
-        Boleto boleto1 = new Boleto("B001", TipoBoleto.GENERAL, 100.0);
-        Boleto boleto2 = new Boleto("B002", TipoBoleto.VIP, 200.0);
+        Boleto boleto1 = new Boleto("B001", TipoBoleto.GENERAL, new Precio(100.0, "USD"));
+        Boleto boleto2 = new Boleto("B002", TipoBoleto.VIP, new Precio(200.0, "USD"));
         boleto1.setEstado(EstadoBoleto.VENDIDO);
         boleto2.setEstado(EstadoBoleto.VENDIDO);
         List<Boleto> boletosComprados = new ArrayList<>();
@@ -107,8 +104,8 @@ class OrganizadorTest {
     void testHacerDevoluciones_SinBoletosComprados() {
         Evento evento = new Evento("Concierto", "Artista X", "Rock");
         Cliente cliente = new Cliente("Ana", "ana@test.com", "123");
-        Boleto boleto1 = new Boleto("B001", TipoBoleto.GENERAL, 100.0);
-        Boleto boleto2 = new Boleto("B002", TipoBoleto.VIP, 200.0);
+        Boleto boleto1 = new Boleto("B001", TipoBoleto.GENERAL, new Precio(100.0, "USD"));
+        Boleto boleto2 = new Boleto("B002", TipoBoleto.VIP, new Precio(200.0, "USD"));
         boleto1.setEstado(EstadoBoleto.VENDIDO);
         boleto2.setEstado(EstadoBoleto.VENDIDO);
         List<Cliente> clientes = new ArrayList<>();

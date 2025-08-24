@@ -47,16 +47,17 @@ public class Main {
         evento1.setOrganizador(o2);
 
         //Boletos evento1
-        ArrayList<Boleto> boletosEvento1 = new ArrayList<>();
-        boletosEvento1.add(new Boleto("B001", TipoBoleto.GENERAL, 50.0));
-        boletosEvento1.add(new Boleto("B002", TipoBoleto.VIP, 120.0));
-        boletosEvento1.add(new Boleto("B003", TipoBoleto.ASIENTO_RESERVADO, 80.0));
+        List<Boleto> boletosEvento1 = new ArrayList<>();
+        boletosEvento1.add(new Boleto("B001", TipoBoleto.GENERAL, new Precio(50.0, "USD")));
+        boletosEvento1.add(new Boleto("B002", TipoBoleto.VIP, new Precio(120.0, "USD")));
+        boletosEvento1.add(new Boleto("B003", TipoBoleto.ASIENTO_RESERVADO, new Precio(80.0, "USD")));
         evento1.setBoletos(boletosEvento1);
+
         //Boletos evento2
         ArrayList<Boleto> boletosEvento2 = new ArrayList<>();
-        boletosEvento1.add(new Boleto("C001", TipoBoleto.GENERAL, 50.0));
-        boletosEvento1.add(new Boleto("C002", TipoBoleto.VIP, 120.0));
-        boletosEvento1.add(new Boleto("C003", TipoBoleto.ASIENTO_RESERVADO, 80.0));
+        boletosEvento1.add(new Boleto("C001", TipoBoleto.GENERAL, new Precio(50.0, "USD")));
+        boletosEvento1.add(new Boleto("C002", TipoBoleto.VIP, new Precio(120.0, "USD")));
+        boletosEvento1.add(new Boleto("C003", TipoBoleto.ASIENTO_RESERVADO, new Precio(80.0, "USD")));
         evento2.setBoletos(boletosEvento2);
 
         List<Evento> eventosDisponibles = new ArrayList<>();
@@ -105,7 +106,6 @@ public class Main {
         //soporte para reportar los problemas
         SoporteHandler s1 = new AgenteSoporte("Pepe", "pepito@gmail.com");
         SoporteHandler s2= new DepartamentoAdministracion();
-        evento1.setAdministracion((DepartamentoAdministracion) s2);
         s1.setSiguiente(s2);
 
         //Incidentes
